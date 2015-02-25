@@ -8,6 +8,7 @@ urlpatterns = patterns('',
 
 
 ################################
+    #rafael
 
     url(r'^admin/', include(admin.site.urls)),
 )
