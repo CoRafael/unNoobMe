@@ -5,7 +5,7 @@ from noob.models import UserProfile
 
 class UserProfilePageAdmin(admin.ModelAdmin):
     list_display = (
-        'username', 'firstname', 'last_name', 'email', 'city', 'points', 'last_login', 'date_joined', 'avatar',)
+        'username', 'firstname', 'last_name', 'email', 'city', 'points', 'last_login', 'date_joined', 'picture',)
 
 
 admin.site.register(UserProfile, UserProfilePageAdmin)
