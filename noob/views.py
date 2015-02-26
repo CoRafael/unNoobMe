@@ -1,7 +1,10 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 from noob.forms import UserForm, UserProfileForm
 
@@ -109,3 +112,13 @@ def register(request):
         'noob/register.html', RequestContext(request,
                                              {'user_form': user_form, 'profile_form': profile_form,
                                               'registered': registered}))
+
+
+# Use the login_required() decorator to ensure only those logged in can access the view.
+@login_required
+def user_logout(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+
+    # Take the user back to the homepage.
+    return HttpResponseRedirect('/noob/')
