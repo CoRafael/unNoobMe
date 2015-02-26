@@ -6,9 +6,10 @@
 
 <body>
 {% if user.is_authenticated %}
-    <h1>UnNoobMe says.. hello {{ user.username }}! -> Leonida you are up!</h1>
+    <h1>UnNoobMe says.. hello {{ user.username }}! -> Leonida you are up (have to show user's data)!</h1>
 {% else %}
-    <h1>Log In - Register... This must be fixed</h1>
+    <a href="/noob/login/">Login</a><br/>
+    <a href="/noob/register/">Register Here</a><br/>
 {% endif %}
 
 

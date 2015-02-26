@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-    city = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, default='Glasgow')
     points = models.IntegerField(default=0)
     avatar = models.ImageField(upload_to='avatar_images', blank=True)
 
