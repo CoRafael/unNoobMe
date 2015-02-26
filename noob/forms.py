@@ -13,6 +13,8 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'password', 'first_name', 'last_name', 'email')
 
 
+# d
+
 class UserProfileForm(forms.ModelForm):
     city = forms.CharField(max_length=100, help_text="Please enter your current location")
     points = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
