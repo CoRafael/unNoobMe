@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rango</title>
+</head>
+
+<body>
+{% if user.is_authenticated %}
+    <h1>UnNoobMe says.. hello {{ user.username }}! -> Leonida you are up!</h1>
+{% else %}
+    <h1>Log In - Register... This must be fixed</h1>
+{% endif %}
+
+
+</body>
+</html>
