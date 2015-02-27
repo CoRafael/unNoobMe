@@ -94,6 +94,8 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
+SMART_APPEND_SLASH = True
+
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'templates/noob'),
