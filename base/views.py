@@ -1,17 +1,19 @@
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 
 from base.forms import UserForm, UserProfileForm
 
 
+@csrf_protect
 def index(request):
-    return render_to_response('base/index.html', RequestContext(request, {}))
+    return render(request, 'base/index.html', {})
 
 
+@csrf_protect
 def user_login(request):
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -36,23 +38,24 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/base/')
+                return HttpResponseRedirect('/')
             else:
                 # An inactive account was used - no logging in!
-                return HttpResponseRedirect('/base/')
+                return HttpResponseRedirect('/')
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponseRedirect('/base/')
+            return HttpResponseRedirect('/')
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return HttpResponseRedirect('/base/')
+        return HttpResponseRedirect('/')
 
 
+@csrf_protect
 def register(request):
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
@@ -73,6 +76,7 @@ def register(request):
             # Now we hash the password with the set_password method.
             # Once hashed, we can update the user object.
             user.set_password(user.password)
+
             user.save()
 
             # Now sort out the UserProfile instance.
@@ -91,6 +95,13 @@ def register(request):
 
             # Update our variable to tell the template registration was successful.
             registered = True
+
+            # Login user
+            user = authenticate(username=request.POST.get('username'),
+                                password=request.POST.get('password'))
+            login(request, user)
+
+            return HttpResponseRedirect('/')
 
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.

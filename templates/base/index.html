@@ -1,51 +1,14 @@
-{#<!DOCTYPE html>#}
-{#<html>#}
-{#<head>#}
-{#    <title>Rango</title>#}
-{#</head>#}
-{##}
-{#<body>#}
-{#{% if user.is_authenticated %}#}
-{#    <h1>Rango says... hello {{ user.username }}!</h1>#}
-{#{% else %}#}
-{#    <h1>Rango says... hello world!</h1>#}
-{#{% endif %}#}
-{##}
-{#{% if categories %}#}
-{#    <ul>#}
-{#        {% for category in categories %}#}
-{#            <!-- Following line changed to add an HTML hyperlink -->#}
-{#            <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
-{#    {% if user.is_authenticated %}#}
-{#        <a href="/rango/restricted/">Restricted Page</a><br/>#}
-{#        <a href="/rango/logout/">Logout</a><br/>#}
-{#    {% else %}#}
-{#        <a href="/rango/register/">Register Here</a><br/>#}
-{#        <a href="/rango/login/">Login</a><br/>#}
-{#    {% endif %}#}
-{##}
-{#    <a href="/rango/about/">About</a><br/>#}
-{#    <a href="/rango/add_category/">Add a New Category</a><br/>#}
-{##}
-{#{% else %}#}
-{#    <strong>There are no categories present.</strong>#}
-{#{% endif %}#}
-{##}
-{#</body>#}
-{#</html>#}
-
 <!DOCTYPE html>
 <html>
 
-<head>
+<head></head>
+<body>
 
     <meta charset="UTF-8">
 
     {% if user.is_authenticated %}
         <h1>"Leles is our only true leader"... hello {{ user.username }}!</h1>
-        <a href="/base/logout/">Logout</a><br/>
+        <a href="logout/">Logout</a><br/>
     {% else %}
         <title>UnNoobMe - Sign-Up/Login Form</title>
 
@@ -55,9 +18,9 @@
 
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" media="screen" type="text/css"/>
 
-        </head>
 
-        <body>
+
+
 
         <div class="form">
 
@@ -70,7 +33,7 @@
                 <div id="signup">
                     <h1>Sign Up for Free</h1>
 
-                    <form action="base/register/" method="post">
+                    <form action="register/" method="post">
                         {% csrf_token %}
                         <input style="display:none">
                         <input type="password" style="display:none">
@@ -135,7 +98,7 @@
                 <div id="login">
                     <h1>Welcome Back!</h1>
 
-                    <form id="login_form" action="base/login/" method="post" autocomplete="off">
+                    <form id="login_form" action="login/" method="post" autocomplete="off">
                         {% csrf_token %}
                         <input style="display:none">
                         <input type="password" style="display:none">

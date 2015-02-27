@@ -4,8 +4,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^base/', include('base.urls')),
-                       url(r'^$', include('base.urls')), )
+                       url('', include('base.urls')), )
 
 
 # UNDERNEATH your urlpatterns definition, add the following two lines:
