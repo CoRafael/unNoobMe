@@ -5,13 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
-from noob.forms import UserForm, UserProfileForm
-
-
-def index1(request):
-    context = RequestContext(request)
-    context_dict = {}
-    return render_to_response('noob/index.html', context_dict, context)
+from base.forms import UserForm, UserProfileForm
 
 
 def index(request):
@@ -42,7 +36,7 @@ def index(request):
                 # We'll send the user back to the homepage.
                 context = RequestContext(request)
                 context_dict = {}
-                return render_to_response('noob/index1.html', context_dict, context)
+                return render_to_response('base/index.html', context_dict, context)
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Rango account is disabled.")
@@ -52,8 +46,7 @@ def index(request):
             # return HttpResponse("Invalid login details supplied.")
             context = RequestContext(request)
             context_dict = {}
-            return render_to_response('noob/index1.html', context_dict, context)
-
+            return render_to_response('base/index.html', context_dict, context)
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
@@ -62,7 +55,7 @@ def index(request):
         # blank dictionary object...
         context = RequestContext(request)
         context_dict = {'user_form': user_form, 'profile_form': profile_form}
-        return render_to_response('noob/index1.html', context_dict, context)
+        return render_to_response('base/index.html', context_dict, context)
 
 
 def user_login(request):
@@ -89,21 +82,21 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return render_to_response('noob/index1.html', RequestContext(request, {}))
+                return render_to_response('base/index.html', RequestContext(request, {}))
             else:
                 # An inactive account was used - no logging in!
-                return render_to_response('noob/index1.html', RequestContext(request, {}))
+                return render_to_response('base/index.html', RequestContext(request, {}))
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            return render_to_response('noob/index1.html', RequestContext(request, {}))
+            return render_to_response('base/index.html', RequestContext(request, {}))
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('noob/index1.html', RequestContext(request, {}))
+        return render_to_response('base/index.html', RequestContext(request, {}))
 
 
 def register(request):
@@ -159,7 +152,7 @@ def register(request):
 
     # Render the template depending on the context.
     return render_to_response(
-        'noob/register.html', RequestContext(request,
+        'base/register.html', RequestContext(request,
                                              {'user_form': user_form, 'profile_form': profile_form,
                                               'registered': registered}))
 
@@ -171,4 +164,4 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/noob/')
+    return HttpResponseRedirect('/base/')

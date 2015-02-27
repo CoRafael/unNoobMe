@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from noob.models import UserProfile, Advertisement, Interest, JobOffer, Rating
+from base.models import UserProfile, Advertisement, Interest, JobOffer, Rating
 
 
 class UserProfilePageAdmin(admin.ModelAdmin):

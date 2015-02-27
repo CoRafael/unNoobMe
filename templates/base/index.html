@@ -45,15 +45,15 @@
 
     {% if user.is_authenticated %}
         <h1>"Leles is our only true leader"... hello {{ user.username }}!</h1>
-        <a href="/noob/logout/">Logout</a><br/>
+        <a href="/base/logout/">Logout</a><br/>
     {% else %}
         <title>UnNoobMe - Sign-Up/Login Form</title>
 
         <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="{{ STATIC_URL }}normalize.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
 
-        <link rel="stylesheet" href="{{ STATIC_URL }}style.css" media="screen" type="text/css"/>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" media="screen" type="text/css"/>
 
         </head>
 
@@ -70,7 +70,7 @@
                 <div id="signup">
                     <h1>Sign Up for Free</h1>
 
-                    <form action="/noob/register/" method="post">
+                    <form action="/base/register/" method="post">
                         {% csrf_token %}
                         <input style="display:none">
                         <input type="password" style="display:none">
@@ -135,7 +135,7 @@
                 <div id="login">
                     <h1>Welcome Back!</h1>
 
-                    <form id="login_form" action="/noob/login/" method="post" autocomplete="off">
+                    <form id="login_form" action="/base/login/" method="post" autocomplete="off">
                         {% csrf_token %}
                         <input style="display:none">
                         <input type="password" style="display:none">
@@ -171,7 +171,7 @@
 
         <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
 
-        <script src="{{ STATIC_URL }}index.js"></script>
+        <script src="{{ STATIC_URL }}scripts/index.js"></script>
     {% endif %}
     </body>
 

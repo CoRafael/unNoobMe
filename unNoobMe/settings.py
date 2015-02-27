@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-DATABASE_PATH = os.path.join(BASE_DIR, 'noob.db')
+DATABASE_PATH = os.path.join(BASE_DIR, 'unNoobMe.db')
 Temp_Path = os.path.realpath('.')
 
 
@@ -29,7 +29,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = '/noob/login/'
+LOGIN_URL = '/base/login/'
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'noob',
+    'base',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +98,6 @@ SMART_APPEND_SLASH = True
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
-    os.path.join(BASE_DIR, 'templates/noob'),
+    os.path.join(BASE_DIR, 'templates/base'),
 
 )

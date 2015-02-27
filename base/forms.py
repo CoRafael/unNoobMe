@@ -2,7 +2,7 @@ __author__ = 'rafael'
 
 from django import forms
 
-from noob.models import UserProfile, User
+from base.models import UserProfile, User
 
 
 class UserForm(forms.ModelForm):
