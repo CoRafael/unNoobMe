@@ -16,6 +16,9 @@ def index1(request):
 
 def index(request):
     # If the request is a HTTP POST, try to pull out the relevant information.
+    user_form = UserForm()
+    profile_form = UserProfileForm()
+
     if request.method == 'POST':
         # Gather the username and password provided by the user.
         # This information is obtained from the login form.
@@ -37,8 +40,9 @@ def index(request):
             if user.is_active:
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
-                login(request, user)
-                return HttpResponseRedirect('/noob/')
+                context = RequestContext(request)
+                context_dict = {}
+                return render_to_response('noob/index1.html', context_dict, context)
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your Rango account is disabled.")
@@ -57,7 +61,7 @@ def index(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         context = RequestContext(request)
-        context_dict = {}
+        context_dict = {'user_form': user_form, 'profile_form': profile_form}
         return render_to_response('noob/index1.html', context_dict, context)
 
 
@@ -85,21 +89,21 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/noob/')
+                return render_to_response('noob/index1.html', RequestContext(request, {}))
             else:
                 # An inactive account was used - no logging in!
-                return HttpResponse("Your Rango account is disabled.")
+                return render_to_response('noob/index1.html', RequestContext(request, {}))
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
+            return render_to_response('noob/index1.html', RequestContext(request, {}))
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('noob/loginPage.html', RequestContext(request, {}))
+        return render_to_response('noob/index1.html', RequestContext(request, {}))
 
 
 def register(request):

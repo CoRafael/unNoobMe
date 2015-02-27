@@ -93,7 +93,7 @@ STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     STATIC_PATH,
 )
-
+APPEND_SLASH = False
 SMART_APPEND_SLASH = True
 
 TEMPLATE_DIRS = (

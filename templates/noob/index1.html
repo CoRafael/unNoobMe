@@ -70,22 +70,23 @@
                 <div id="signup">
                     <h1>Sign Up for Free</h1>
 
-                    <form action="http://127.0.0.1:8000/noob/" method="post">
+                    <form action="/noob/register/" method="post">
                         {% csrf_token %}
-
+                        <input style="display:none">
+                        <input type="password" style="display:none">
                         <div class="top-row">
                             <div class="field-wrap">
                                 <label>
                                     First Name<span class="req">*</span>
                                 </label>
-                                <input type="text" required autocomplete="off"/>
+                                <input name="first_name" type="text" required autocomplete="off"/>
                             </div>
 
                             <div class="field-wrap">
                                 <label>
                                     Last Name<span class="req">*</span>
                                 </label>
-                                <input type="text" required autocomplete="off"/>
+                                <input name="last_name" type="text" required autocomplete="off"/>
                             </div>
                         </div>
 
@@ -93,33 +94,33 @@
                             <label>
                                 Username<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off"/>
+                            <input name="username" type="text" required autocomplete="off"/>
                         </div>
 
                         <div class="field-wrap">
                             <label>
                                 Password<span class="req">*</span>
                             </label>
-                            <input type="password" required autocomplete="off"/>
+                            <input name="password" type="password" required autocomplete="off"/>
                         </div>
 
                         <div class="field-wrap">
                             <label>
                                 Email Address<span class="req">*</span>
                             </label>
-                            <input type="email" required autocomplete="off"/>
+                            <input name="email" type="email" required autocomplete="off"/>
                         </div>
 
                         <div class="field-wrap">
                             <label>
                                 City<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off"/>
+                            <input name="city" type="text" required autocomplete="off"/>
                         </div>
 
 
-                        <button type="file" class="button button-block"/>
-                        Add Avatar Image</button>
+                        {#                        <button type="file" class="button button-block"/>#}
+                        {#                        Add Avatar Image</button>#}
 
                         &nbsp;
                         &nbsp;
@@ -134,7 +135,7 @@
                 <div id="login">
                     <h1>Welcome Back!</h1>
 
-                    <form id="login_form" action="http://127.0.0.1:8000/noob/" method="post" autocomplete="off">
+                    <form id="login_form" action="/noob/login/" method="post" autocomplete="off">
                         {% csrf_token %}
                         <input style="display:none">
                         <input type="password" style="display:none">
