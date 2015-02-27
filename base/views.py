@@ -105,7 +105,7 @@ def register(request):
         profile_form = UserProfileForm()
 
     # Render the template depending on the context.
-    return HttpResponseRedirect('/base/')
+    return HttpResponseRedirect('/')
 
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
@@ -115,4 +115,4 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/base/')
+    return HttpResponseRedirect('/')
