@@ -49,13 +49,13 @@ class UserProfile(models.Model):
 
 class Advertisement(models.Model):
     active = models.BooleanField(default=True)
-    duration = models.IntegerField()
+    duration = models.IntegerField()  # lets say hours
     type_of_meeting = models.CharField(max_length=150)
-    date = models.DateField()
+    date = models.DateTimeField()
     lesson = models.CharField(max_length=150)
     # other relationships
-    advInterest = models.OneToOneField(Interest)
-    user = models.OneToOneField(UserProfile)
+    advInterest = models.ForeignKey(Interest)
+    user = models.ForeignKey(UserProfile)
 
     def __unicode__(self):
         return ",".join([self.user.user.username, self.date.strftime("%d-%m-%y"), self.advInterest.category])
@@ -70,8 +70,8 @@ class Advertisement(models.Model):
 class JobOffer(models.Model):
     accepted = models.BooleanField(default=True)
     # other relationship
-    user = models.OneToOneField(UserProfile)
-    advertisement = models.OneToOneField(Advertisement)
+    user = models.ForeignKey(UserProfile)
+    advertisement = models.ForeignKey(Advertisement)
 
     def get_user(self):
         return self.user.username()
@@ -84,8 +84,8 @@ class Rating(models.Model):
     rate = models.IntegerField(default=0)
     comment = models.CharField(max_length=250, default='')
     # other relationship
-    author = models.OneToOneField(UserProfile)
-    offer = models.OneToOneField(JobOffer)
+    author = models.ForeignKey(UserProfile)
+    offer = models.ForeignKey(JobOffer)
 
     def get_author(self):
         return self.author.username()
