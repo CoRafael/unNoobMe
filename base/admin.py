@@ -15,7 +15,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
 
 
 class InterestAdmin(admin.ModelAdmin):
-    list_display = ('category', )
+    list_display = ('category',)
 
 
 class JobOfferAdmin(admin.ModelAdmin):

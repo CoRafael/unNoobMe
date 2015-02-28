@@ -24,14 +24,16 @@ def add_user(username, firstname, last_name, email, password):
                                      is_superuser=False)
     user.first_name = firstname
     user.last_name = last_name
-
     user.save()
     return user
 
 
 def add_user_profile(user, city):
-    user = UserProfile(user=user, city=city)
-    user.save()
+    user, m = UserProfile.objects.get_or_create(user=user, city=city)
+    get, f = Interest.objects.get_or_create(category='Biology')
+    get1, f = Interest.objects.get_or_create(category='Biology')
+    user.userInterest.add(get)
+    user.userInterest.add(get1)
     return user
 
 
