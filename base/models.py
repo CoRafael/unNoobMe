@@ -91,4 +91,6 @@ class Rating(models.Model):
 class MenuItem(models.Model):
     name = models.CharField(max_length=50, default='menu item')
     url = models.CharField(max_length=250)
-    parent = models.ForeignKey(MenuItem)
+    parent = models.ForeignKey('self')
+
+

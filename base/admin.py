@@ -20,7 +20,7 @@ class InterestAdmin(admin.ModelAdmin):
 
 class JobOfferAdmin(admin.ModelAdmin):
     list_display = (
-        'get_user', 'get_add_id', 'offerID', 'accepted',)
+        'get_user', 'get_add_id', 'accepted',)
 
 
 class RatingAdmin(admin.ModelAdmin):
