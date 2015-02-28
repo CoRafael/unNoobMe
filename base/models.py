@@ -71,7 +71,7 @@ class JobOffer(models.Model):
         return self.user.username()
 
     def get_add_id(self):
-        return self.advertisement.advID
+        return self.advertisement.id
 
 
 class Rating(models.Model):
@@ -85,7 +85,7 @@ class Rating(models.Model):
         return self.author.username()
 
     def get_offer_id(self):
-        return self.offer.offerID
+        return self.offer.id
 
 
 class MenuItem(models.Model):

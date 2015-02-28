@@ -11,12 +11,11 @@ class UserProfilePageAdmin(admin.ModelAdmin):
 
 class AdvertisementAdmin(admin.ModelAdmin):
     list_display = (
-        'advID', 'lesson', 'date', 'type_of_meeting', 'duration', 'active', 'get_interest')
+        'lesson', 'date', 'type_of_meeting', 'duration', 'active', 'get_interest')
 
 
 class InterestAdmin(admin.ModelAdmin):
-    list_display = (
-        'interestID', 'category', )
+    list_display = ('category', )
 
 
 class JobOfferAdmin(admin.ModelAdmin):
@@ -26,7 +25,7 @@ class JobOfferAdmin(admin.ModelAdmin):
 
 class RatingAdmin(admin.ModelAdmin):
     list_display = (
-        'rateID', 'get_offer_id', 'get_author', 'rate', 'comment',)
+        'get_offer_id', 'get_author', 'rate', 'comment',)
 
 admin.site.register(UserProfile, UserProfilePageAdmin)
 admin.site.register(Advertisement, AdvertisementAdmin)
