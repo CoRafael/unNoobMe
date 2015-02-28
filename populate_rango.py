@@ -16,6 +16,10 @@ def populate():
 
     user = User.objects._create_user('leonidas', 'a@a.a', '1234', 'True', 'True')
     user = User.objects._create_user('rafael', 'a@a.a', '1234', 'True', 'True')
+    user = User.objects._create_user('nikolaos', 'a@a.a', '1234', 'True', 'True')
+    user = User.objects._create_user('finlay', 'a@a.a', '1234', 'True', 'True')
+    user = User.objects._create_user('stephanie', 'a@a.a', '1234', 'True', 'True')
+
 
     for x in range(0, 10):
         print 'Creating user_%d' % x
