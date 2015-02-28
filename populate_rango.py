@@ -31,7 +31,7 @@ def add_user(username, firstname, last_name, email, password):
 def add_user_profile(user, city):
     user, m = UserProfile.objects.get_or_create(user=user, city=city)
     get, f = Interest.objects.get_or_create(category='Biology')
-    get1, f = Interest.objects.get_or_create(category='Biology')
+    get1, f = Interest.objects.get_or_create(category='Curt')
     user.userInterest.add(get)
     user.userInterest.add(get1)
     return user
