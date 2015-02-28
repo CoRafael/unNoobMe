@@ -57,6 +57,9 @@ class Advertisement(models.Model):
     advInterest = models.OneToOneField(Interest)
     user = models.OneToOneField(UserProfile)
 
+    def __unicode__(self):
+        return ",".join([self.user.user.username, self.date.strftime("%d-%m-%y"), self.advInterest.category])
+
     def get_interest(self):
         return self.advInterest.category
 
