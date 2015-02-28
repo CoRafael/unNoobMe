@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class Interest(models.Model):
     category = models.CharField(max_length=100, default='Computer Science')
 
+    def __unicode__(self):
+        return self.category
+
 
 class UserProfile(models.Model):
     # The additional attributes we wish to include.
