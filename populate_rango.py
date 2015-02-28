@@ -11,7 +11,7 @@ from base.models import *
 
 def populate():
     print 'Creating Interests'
-    # user_interest=create_interests()
+    user_interest = create_interests()
     for x in range(0, 10):
         print 'Creating user_%d' % x
         user = add_user(username='user_%d' % x, firstname='user_%d' % x, last_name='user_%d' % x,
@@ -31,10 +31,7 @@ def add_user(username, firstname, last_name, email, password):
 
 def add_user_profile(user, city):
     user = UserProfile(user=user, city=city)
-    get = Interest(category='Computer Science')
     user.save()
-    get.save()
-    user.userInterest.add(get)
     return user
 
 
