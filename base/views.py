@@ -9,7 +9,13 @@ from base.forms import UserForm, UserProfileForm
 
 
 @csrf_protect
+@login_required
 def index(request):
+    return render(request, 'base/dummyIndex.html', {})
+
+
+def user_login(request):
+
     if request.method == 'POST' and request.POST.get('type') == 'register':
         # A boolean value for telling the template whether the registration was successful.
         # Set to False initially. Code changes value to True when registration succeeds.
@@ -53,8 +59,6 @@ def index(request):
         else:
             print user_form.errors, profile_form.errors
 
-        return HttpResponseRedirect('/')
-
     elif request.method == 'POST' and request.POST.get('type') == 'login':
         # If the request is a HTTP POST, try to pull out the relevant information.
         # Gather the username and password provided by the user.
@@ -83,13 +87,10 @@ def index(request):
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
 
+    if request.user.is_authenticated():
         return HttpResponseRedirect('/')
 
-    elif request.user.is_authenticated():
-        return render(request, 'base/dummyIndex.html', {})
-
-    else:
-        return render(request, 'base/register.html', {})
+    return render(request, 'base/register.html', {})
 
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
