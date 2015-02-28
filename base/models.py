@@ -3,10 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Interest(models.Model):
-    # do we really need an extra field to be a primary key?
-    # we know from theory that each model has a unique
     category = models.CharField(max_length=100, default='Computer Science')
-    interestID = models.IntegerField(unique=True, primary_key=True)
 
 
 class UserProfile(models.Model):
@@ -48,9 +45,7 @@ class UserProfile(models.Model):
 
 
 class Advertisement(models.Model):
-    advID = models.IntegerField(unique=True, primary_key=True)
     active = models.BooleanField(default=True)
-    # sec? hr ? minite? Discuss!!!
     duration = models.IntegerField()
     type_of_meeting = models.CharField(max_length=150)
     date = models.DateField()
@@ -68,7 +63,6 @@ class Advertisement(models.Model):
 
 class JobOffer(models.Model):
     accepted = models.BooleanField(default=True)
-    offerID = models.IntegerField(unique=True, primary_key=True)
     # other relationship
     user = models.OneToOneField(UserProfile)
     advertisement = models.OneToOneField(Advertisement)
@@ -81,7 +75,6 @@ class JobOffer(models.Model):
 
 
 class Rating(models.Model):
-    rateID = models.IntegerField(unique=True, primary_key=True)
     rate = models.IntegerField(default=0)
     comment = models.CharField(max_length=250, default='')
     # other relationship
@@ -93,3 +86,9 @@ class Rating(models.Model):
 
     def get_offer_id(self):
         return self.offer.offerID
+
+
+class MenuItem(models.Model):
+    name = models.CharField(max_length=50, default='menu item')
+    url = models.CharField(max_length=250)
+    parent = models.ForeignKey(MenuItem)
