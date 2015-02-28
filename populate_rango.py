@@ -104,7 +104,7 @@ Shelly;Knowles;elit@Integerurna.ca'''
                                                  mtypeslist[randrange(0, len(mtypeslist) - 1)],
                                                  datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
                                                  courseslist[1][randrange(1, len(courseslist[1]) - 1)],
-                                                 interestslist[6], userlist[randrange(1, len(userlist) - 1)]))
+                                                 interestslist[7], userlist[randrange(1, len(userlist) - 1)]))
         day = randrange(1, 28)
         advertismentlist.append(add_advertisment(randrange(1, 4),
                                                  mtypeslist[randrange(0, len(mtypeslist) - 1)],
