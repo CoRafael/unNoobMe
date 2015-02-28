@@ -13,7 +13,7 @@ def index(request):
     if request.method == 'POST' and request.POST.get('type') == 'register':
         # A boolean value for telling the template whether the registration was successful.
         # Set to False initially. Code changes value to True when registration succeeds.
-        # Note that we make use of both UserForm and UserProfileForm.
+                # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
 
@@ -47,13 +47,13 @@ def index(request):
                                 password=request.POST.get('password'))
             login(request, user)
 
-            return HttpResponseRedirect('/')
-
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.
         else:
             print user_form.errors, profile_form.errors
+
+        return HttpResponseRedirect('/')
 
     elif request.method == 'POST' and request.POST.get('type') == 'login':
         # If the request is a HTTP POST, try to pull out the relevant information.
