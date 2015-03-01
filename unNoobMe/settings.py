@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 
 LOGIN_URL = '/login'
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -99,5 +98,5 @@ SMART_APPEND_SLASH = True
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'templates/base'),
-
+    os.path.join(BASE_DIR, 'templates/advertisement'),
 )

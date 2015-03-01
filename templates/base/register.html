@@ -24,7 +24,7 @@
         <div id="signup">
             <h1>Sign Up for Free</h1>
 
-            <form id="register" action="/login/" method="post">
+            <form id="register" action="/register/" method="post">
                 {% csrf_token %}
                 <input style="display:none">
                 <input hidden="true" name="type" value="register">
@@ -91,7 +91,7 @@
         <div id="login">
             <h1>Welcome Back!</h1>
 
-            <form id="login_form" action="/login/" method="post">
+            <form id="login_form" method="post">
                 {% csrf_token %}
                 <input style="display:none">
                 <input hidden="true" name="type" value="login"/>
