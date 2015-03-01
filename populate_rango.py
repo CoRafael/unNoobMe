@@ -11,7 +11,6 @@ from base.models import *
 import datetime
 
 
-
 def populate():
     print 'Creating Interests...'
 
@@ -86,38 +85,68 @@ Shelly;Knowles;elit@Integerurna.ca'''
 
     print 'Done'
 
-    advertismentlist = []
+    advertisementlist = []
     mtypeslist = create_meeting_types()
     courseslist = create_courses()
 
-    print 'Creating advertisments'
+    print 'Creating Advertisments'
 
     for x in range(0, 30, 1):
         day = randrange(1, 28)
-        advertismentlist.append(add_advertisment(randrange(1, 4),
-                                                 mtypeslist[randrange(0, len(mtypeslist) - 1)],
-                                                 datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
-                                                 courseslist[0][randrange(1, len(courseslist[0]) - 1)],
-                                                 interestslist[0], userlist[randrange(1, len(userlist) - 1)]))
+        advertisementlist.append(add_advertisement(randrange(1, 4),
+                                                   mtypeslist[randrange(0, len(mtypeslist) - 1)],
+                                                   datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
+                                                   courseslist[0][randrange(1, len(courseslist[0]) - 1)],
+                                                   interestslist[0], userlist[randrange(1, len(userlist) - 1)]))
         day = randrange(1, 28)
-        advertismentlist.append(add_advertisment(randrange(1, 4),
-                                                 mtypeslist[randrange(0, len(mtypeslist) - 1)],
-                                                 datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
-                                                 courseslist[1][randrange(1, len(courseslist[1]) - 1)],
-                                                 interestslist[7], userlist[randrange(1, len(userlist) - 1)]))
+        advertisementlist.append(add_advertisement(randrange(1, 4),
+                                                   mtypeslist[randrange(0, len(mtypeslist) - 1)],
+                                                   datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
+                                                   courseslist[1][randrange(1, len(courseslist[1]) - 1)],
+                                                   interestslist[7], userlist[randrange(1, len(userlist) - 1)]))
         day = randrange(1, 28)
-        advertismentlist.append(add_advertisment(randrange(1, 4),
-                                                 mtypeslist[randrange(0, len(mtypeslist) - 1)],
-                                                 datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
-                                                 courseslist[2][randrange(1, len(courseslist[2]) - 1)],
-                                                 interestslist[6], userlist[randrange(1, len(userlist) - 1)]))
+        advertisementlist.append(add_advertisement(randrange(1, 4),
+                                                   mtypeslist[randrange(0, len(mtypeslist) - 1)],
+                                                   datetime.datetime(2015, 8, day, 6, 51, 1, 804000, None),
+                                                   courseslist[2][randrange(1, len(courseslist[2]) - 1)],
+                                                   interestslist[6], userlist[randrange(1, len(userlist) - 1)]))
+
+    print 'Done'
+
+    jobofferlist = []
+
+    print 'Creating JobOffers'
+
+    for x in advertisementlist:
+        for u in range(0, randrange(3, 10), 1):
+            user = userlist[u]
+            jobofferlist.append(add_joboffer(user, x))
+
+    print 'Done'
+
+    ratinglist = []
+
+    print 'Creating Ratings'
+
+    for x in jobofferlist:
+        ratinglist.append(add_rating(randrange(0, 10), '', userlist[randrange(1, len(userlist) - 1)], x))
 
     print 'Done'
 
 
-def add_advertisment(duration, mtype, date, lesson, interest, user):
+def add_rating(rate, comment, author, offer):
+    rating = Rating.objects.get_or_create(rate=rate, comment=comment, author=author, offer=offer)[0]
+    return rating
+
+
+def add_joboffer(user, advertisement):
+    offer = JobOffer.objects.get_or_create(user=user, advertisement=advertisement)[0]
+    return offer
+
+
+def add_advertisement(duration, mtype, date, lesson, interest, user):
     adv = Advertisement.objects.get_or_create(duration=duration, type_of_meeting=mtype,
-                                              date=date, lesson=lesson, advInterest=interest[0], user=user)
+                                              date=date, lesson=lesson, advInterest=interest[0], user=user)[0]
     return adv
 
 

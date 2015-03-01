@@ -68,7 +68,7 @@ class Advertisement(models.Model):
 
 
 class JobOffer(models.Model):
-    accepted = models.BooleanField(default=True)
+    accepted = models.BooleanField(default=False)
     # other relationship
     user = models.ForeignKey(UserProfile)
     advertisement = models.ForeignKey(Advertisement)
@@ -92,11 +92,5 @@ class Rating(models.Model):
 
     def get_offer_id(self):
         return self.offer.id
-
-
-class MenuItem(models.Model):
-    name = models.CharField(max_length=50, default='menu item')
-    url = models.CharField(max_length=250)
-    parent = models.ForeignKey('self')
 
 

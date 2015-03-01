@@ -17,11 +17,11 @@ class InterestAdmin(admin.ModelAdmin):
 
 
 class JobOfferAdmin(admin.ModelAdmin):
-    list_display = ('id' , 'get_user', 'get_add_id', 'accepted',)
+    list_display = ('id', 'get_user', 'get_add_id', 'accepted',)
 
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ( 'id', 'get_offer_id', 'get_author', 'rate', 'comment',)
+    list_display = ('id', 'get_offer_id', 'get_author', 'rate', 'comment',)
 
 admin.site.register(UserProfile, UserProfilePageAdmin)
 admin.site.register(Advertisement, AdvertisementAdmin)
