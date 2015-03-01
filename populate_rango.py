@@ -78,7 +78,9 @@ Shelly;Knowles;elit@Integerurna.ca'''
         f = x.split(';')
 
         user = add_user(f[0].lower() + str(index), f[0], f[1], f[2], '1234')
-        user_profile = add_user_profile(user, 'Glasgow', index % (len(interestslist) - 1) + 1)
+        user_profile = add_user_profile(user, 'Glasgow',
+                                        [index % (len(interestslist) - 1) + 1,
+                                         (index * randrange(5, 10)) % (len(interestslist) - 1) + 1])
         index += 1
 
         userlist.append(user_profile)
@@ -160,7 +162,7 @@ def add_user(username, firstname, last_name, email, password):
 
 def add_user_profile(user, city, interest):
     profile = UserProfile.objects.get_or_create(user=user, city=city)[0]
-    profile.userInterest.add(interest)
+    profile.userInterest.add(*interest)
     profile.save()
     return profile
 

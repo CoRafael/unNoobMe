@@ -44,7 +44,7 @@ class UserProfile(models.Model):
         return self.user.date_joined
 
     def get_interests(self):
-        return "\n".join([i.category for i in self.userInterest.all()])
+        return ", ".join([i.category for i in self.userInterest.all()])
 
 
 class Advertisement(models.Model):
@@ -58,7 +58,7 @@ class Advertisement(models.Model):
     user = models.ForeignKey(UserProfile)
 
     def __unicode__(self):
-        return ",".join([self.user.user.username, self.date.strftime("%d-%m-%y"), self.advInterest.category])
+        return ", ".join([self.user.user.username, self.date.strftime("%d-%m-%y"), self.advInterest.category])
 
     def get_interest(self):
         return self.advInterest.category
