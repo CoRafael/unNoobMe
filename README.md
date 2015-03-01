@@ -1,1 +1,1 @@
-# unNoobMe
+![unNOOBme] (static/images/logo_big.png)
