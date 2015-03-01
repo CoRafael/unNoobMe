@@ -2,7 +2,7 @@ __author__ = 'rafael'
 
 from django.conf.urls import patterns, url
 
-from add import views
+from advertisement import views
 
 
 urlpatterns = patterns('',

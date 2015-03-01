@@ -4,11 +4,11 @@ from django.conf import settings
 
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^add/', include('add.urls')),
+                       url(r'^advertisement/', include('advertisement.urls')),
                        url('', include('base.urls')), )
 
 
-# UNDERNEATH your urlpatterns definition, add the following two lines:
+# UNDERNEATH your urlpatterns definition, advertisement the following two lines:
 if settings.DEBUG:
     urlpatterns += patterns(
         'django.views.static',
