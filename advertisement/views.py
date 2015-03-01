@@ -5,7 +5,6 @@ from base.models import *
 
 
 
-
 # return the latest 10 ACTIVE advertisments of the database
 @login_required
 def latest_advertisement(request):
