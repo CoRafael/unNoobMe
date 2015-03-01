@@ -99,4 +99,8 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'templates/base'),
     os.path.join(BASE_DIR, 'templates/advertisement'),
+    os.path.join(BASE_DIR, 'templates/addadvertisement'),
+    os.path.join(BASE_DIR, 'templates/notification'),
+    os.path.join(BASE_DIR, 'templates/rating'),
+    os.path.join(BASE_DIR, 'templates/userprofile'),
 )
