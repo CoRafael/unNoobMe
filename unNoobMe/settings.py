@@ -49,6 +49,8 @@ INSTALLED_APPS = (
     'userprofile',
 )
 
+# MALAKIA COMMIT GAMW
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
