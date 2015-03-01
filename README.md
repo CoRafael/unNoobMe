@@ -1,1 +1,1 @@
-![unNOOBme] (static/images/logo_big.png)
+![unNOOBme] (https://raw.githubusercontent.com/CoRafael/unNoobMe/static/images/logo_big.png)
