@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 
 from base.forms import UserForm, UserProfileForm
+from base.models import Advertisement
+from base.models import UserProfile
 
 
 @csrf_protect
@@ -15,11 +17,10 @@ def index(request):
 
 
 def user_login(request):
-
     if request.method == 'POST' and request.POST.get('type') == 'register':
         # A boolean value for telling the template whether the registration was successful.
         # Set to False initially. Code changes value to True when registration succeeds.
-                # Note that we make use of both UserForm and UserProfileForm.
+        # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
 
@@ -101,3 +102,19 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
+
+# return the latest 10 ACTIVE advertisments of the database
+@login_required
+def latest_advertisement(request):
+
+    latest_advertisement_list = Advertisement.objects.filter(active=True).order_by('-date')[:10]
+    context = {'latest_advertisement': latest_advertisement_list}
+    return render(request, 'base/dummy_latest.html', context)
+
+# return the latest 10 ACTIVE advertisments for specific interests of the user
+@login_required
+def latest_interest(request):
+
+    interest_list = Advertisement.objects.filter(active=True, advInterest=1).order_by('-date')[:10]
+    context = {'latest_interest': interest_list}
+    return render(request, 'base/dummy_interest.html', context)

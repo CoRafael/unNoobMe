@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1> Interest </h1>
+
+{% if latest_interest %}
+
+    <ul>
+        <p><strong>An order list (by date) of interest advertisments</strong></p>
+        {% for advert in latest_interest %}
+            <p>{{advert}}</p>
+
+
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no active advertisment for your interests</p>
+{% endif %}
+
+</body>
+</html>
