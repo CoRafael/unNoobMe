@@ -21,4 +21,4 @@ def latest_interest(request):
                                                                             advInterest=user_profile.userInterest.all()) \
         .order_by('-date')[:10]
     context = {'latest_interest': interestedads}
-    return render(request, 'advertisement/dummy_interest.html', context)
+    return render(request, 'advertisement/interest.html', context)

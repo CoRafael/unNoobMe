@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Interests{% endblock %}
+
+{% block body_block %}
+
+    {% if latest_interest %}
+
+        {% for advert in latest_interest %}
+            <div class="row clearfix">
+                <div class="col-md-12 column">{{ advert }}</div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <p>There are no active advertisment for your interests</p>
+    {% endif %}
+
+{% endblock %}
