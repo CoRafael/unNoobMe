@@ -8,10 +8,9 @@ from django.views.decorators.csrf import csrf_protect
 from base.forms import UserForm, UserProfileForm
 
 
-@csrf_protect
 @login_required
 def index(request):
-    return render(request, 'base/dummyIndex.html', {})
+    return render(request, 'base.html', {})
 
 
 def user_register(request):
