@@ -5,6 +5,7 @@ from django.conf import settings
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^advertisement/', include('advertisement.urls')),
+                       url(r'^user/', include('userprofile.urls')),
                        url('', include('base.urls')), )
 
 

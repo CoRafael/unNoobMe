@@ -17,8 +17,7 @@ def latest_advertisement(request):
 def latest_interest(request):
     user = request.user
     user_profile = UserProfile.objects.filter(user=user)[0]
-    interestedads = Advertisement.objects.select_related('Interest').filter(active=True,
-                                                                            advInterest=user_profile.userInterest.all()) \
-        .order_by('-date')[:10]
+    interestedads = Advertisement.objects.filter(active=True, advInterest=user_profile.userInterest.all()).order_by(
+        '-date')[:10]
     context = {'latest_interest': interestedads}
     return render(request, 'advertisement/interest.html', context)

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body_block %}
+
+    {% if userprofile %}
+
+        {{ userprofile }}
+
+        {% for f in interests %}
+            <div class="row clearfix">
+                <div class="col-md-12 column">{{ f }}<div class="col-md-12 column">
+            </div>
+        {% endfor %}
+
+        {% for f in ratings %}
+            <div class="row clearfix">
+                <div class="col-md-12 column">{{ f }}<div class="col-md-12 column">
+            </div>
+        {% endfor %}
+
+    {% else %}
+        No such user
+    {% endif %}
+
+{% endblock %}
