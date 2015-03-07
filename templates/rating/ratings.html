@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Ratings{% endblock %}
+
+{% block body_block %}
+    {% if latest_rating %}
+        {% for r in latest_rating %}
+            <div>
+            <p> Author: {{ r.author }}</p>
+            <p> Rating: {{ r.rate }}</p>
+            <p> Comment : {{ r.comment }}</p>
+            <p><b></b>----------------------</b></p>
+            </div>
+        {% endfor %}
+    {% else %}
+    {% endif %}
+
+{% endblock %}
