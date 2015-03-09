@@ -5,17 +5,21 @@
 {% block title %}Ratings{% endblock %}
 
 {% block body_block %}
-    {% if userprofile %}
-            {% for r in ratings %}
-                <div>
-                <p> Author: {{ r.author }}</p>
-                <p> Subject: {{ r.offer.advertisement.advInterest }} </p>
-                <p> Lesson: {{ r.offer.advertisement.lesson }}</p>
-                <p> Location: {{ r.offer.advertisement.user.city }} </p>
-                <p> Rating: {{ r.rate }}</p>
-                <p> Comment: {{r.comment }}</p>
-                <p><b></b>----------------------</b></p>
-                </div>
-            {% endfor %}
-    {% endif %}
+    {% for r in ratings %}
+        <div>
+            <p> Author: {{ r.author }}</p>
+
+            <p> Subject: {{ r.offer.advertisement.advInterest }} </p>
+
+            <p> Lesson: {{ r.offer.advertisement.lesson }}</p>
+
+            <p> Location: {{ r.offer.advertisement.user.city }} </p>
+
+            <p> Rating: {{ r.rate }}</p>
+
+            <p> Comment: {{ r.comment }}</p>
+
+            <p><b></b>----------------------</b></p>
+        </div>
+    {% endfor %}
 {% endblock %}

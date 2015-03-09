@@ -4,4 +4,4 @@ from rating import views
 
 
 urlpatterns = patterns('',
-                       url(r'^(.*)/$', views.latest_rating, name='rating'),)
+                       url(r'^latest/$', views.latest_rating, name='rating'),)
