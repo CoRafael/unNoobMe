@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% load staticfiles %}
+    {% load base_extras %}
+
+    {% url 'interest' as interest %}
+
     <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
 
     <title>unNOOBme - {% block title %}Home{% endblock %}</title>
@@ -35,7 +39,7 @@
                 <ul class="nav navbar-nav">
 
                     <!-- commented out the links of those that do not exist yet -->
-                    <li><a href="{% url 'interest' %}">Interests</a></li>
+                    <li class="{% activetag request interest %}"><a href="{% url 'interest' %}">Interests</a></li>
                     <li><a href="{% url 'latest' %}">Latest</a></li>
                     <li><a href="{% url 'rating' user %}">Ratings</a></li>
                 </ul>
