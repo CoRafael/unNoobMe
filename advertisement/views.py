@@ -9,7 +9,7 @@ from base.models import *
 def latest_advertisement(request):
     latest_advertisement_list = Advertisement.objects.filter(active=True).order_by('-date')[:10]
     context = {'latest_advertisement': latest_advertisement_list}
-    return render(request, 'advertisement/dummy_latest.html', context)
+    return render(request, 'advertisement/latest.html', context)
 
 
 # return the latest 10 ACTIVE advertisments for specific interests of the user

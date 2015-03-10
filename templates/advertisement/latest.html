@@ -2,13 +2,16 @@
 
 {% load staticfiles %}
 
-{% block title %}Interests{% endblock %}
+{% block title %}Latest Advertisments{% endblock %}
+
 
 {% block body_block %}
 
-    {% if latest_interest %}
+    {% if latest_advertisement %}
 
-        {% for advert in latest_interest %}
+        {% for advert in latest_advertisement %}
+
+
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <p> Noob: {{ advert.user }}</p>
@@ -26,12 +29,14 @@
 
                     <p> ***** next advertisment *****</p>
                     <br><br>
+
                 </div>
             </div>
         {% endfor %}
 
+
     {% else %}
-        <p>There are no active advertisement for your interests</p>
+        <p>There are no active advertisement for your latest</p>
     {% endif %}
 
 {% endblock %}
