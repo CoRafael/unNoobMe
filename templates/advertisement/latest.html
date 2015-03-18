@@ -4,39 +4,38 @@
 
 {% block title %}Latest Advertisments{% endblock %}
 
-
 {% block body_block %}
 
     {% if latest_advertisement %}
 
-        {% for advert in latest_advertisement %}
+<h1 id = "title">10 Latest Advertisments</h1>
+        <div class="container">
+  {% for advertisment in latest_advertisement %}
 
 
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <p> Noob: {{ advert.user }}</p>
-
-                    <p> User Location: {{ advert.user.city }}   </p>
-
-                    <p> Lesson: {{ advert.lesson }} - {{ advert.advInterest }}</p>
-
-                    <p> Date:---------> {{ advert.date }} <-------</p>
-
-                    <p> Duration: {{ advert.duration }}</p>
-
-                    <p> Type of meeting: {{ advert.type_of_meeting }}</p>
 
 
-                    <p> ***** next advertisment *****</p>
-                    <br><br>
+<div class="row">
+    <div class="item">
+      <div class="well">
+            <p><b> Noob: </b> {{ advertisment.user }}</p>
+            <p><b> Type of meeting: </b> {{ advertisment.type_of_meeting }}</p>
+            <p><b> Duration: </b> {{ advertisment.duration }}</p>
+            <p><b> Date:---------  </b>{{ advertisment.date }} -------</p>
+      </div>
+    </div>
 
-                </div>
-            </div>
+
+
+
+
+
+
+
         {% endfor %}
-
-
-    {% else %}
-        <p>There are no active advertisement for your latest</p>
-    {% endif %}
-
+</div>
+        </div>
+{% else %}
+    <p>There are no active advertisment</p>
+{% endif %}
 {% endblock %}
