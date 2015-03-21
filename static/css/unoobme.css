@@ -1,0 +1,29 @@
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+.row {
+ -moz-column-width: 23em;
+ -webkit-column-width: 20em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em;
+
+}
+
+.item {
+ display: inline-block;
+ padding:  .20rem;
+ width:  100%;
+}
+
+.well {
+ position:relative;
+ display: block;
+}
+
+.container {
+    padding: 25px;
+    box-shadow: 0 10px 15px gray;
+}
+
+.navbar {
+    margin-top: 25px;
+}

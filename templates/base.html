@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
     {% load staticfiles %}
     {% load base_extras %}
@@ -16,6 +15,8 @@
     {% url 'userprofile' user as userprofile %}
 
     <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="/static/css/unoobme.css">
+
 
     <title>unNOOBme - {% block title %}Home{% endblock %}</title>
 
@@ -53,7 +54,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, {{ user.username }}<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li class="{% activetag request userprofile %}"><a href="{% url 'userprofile' user %}">Profile</a></li>
+                            <li class="{% activetag request userprofile %}"><a href="{% url 'userprofile' user %}">Profile</a>
+                            </li>
                             <li><a href="{% url 'logout' %}">Logout</a></li>
                         </ul>
                     </li>
