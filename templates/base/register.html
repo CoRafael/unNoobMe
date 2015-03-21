@@ -31,8 +31,7 @@
 
                 <form id="register" action="/register/" method="post">
                     {% csrf_token %}
-                    <input style="display:none">
-                    <input hidden="true" name="type" value="register">
+                    <input style="display: none" hidden="true" name="type" value="register">
                     <input type="password" style="display:none">
 
                     <div class="top-row">
@@ -98,8 +97,7 @@
 
                 <form id="login_form" method="post">
                     {% csrf_token %}
-                    <input style="display:none">
-                    <input hidden="true" name="type" value="login"/>
+                    <input style="display: none" hidden="true" name="type" value="login"/>
                     <input type="password" style="display:none">
 
                     <div class="field-wrap">
