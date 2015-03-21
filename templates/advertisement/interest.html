@@ -8,30 +8,32 @@
 
     {% if latest_interest %}
 
-        {% for advert in latest_interest %}
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <p> Noob: {{ advert.user }}</p>
+        <div>
+            <div class="row">
 
-                    <p> User Location: {{ advert.user.city }}   </p>
+                {% for advertisment in latest_interest %}
 
-                    <p> Lesson: {{ advert.lesson }} - {{ advert.advInterest }}</p>
+                    <div class="item">
+                        <div class="well">
+                            <p><b> Noob: </b> {{ advertisment.user }}</p>
 
-                    <p> Date:---------> {{ advert.date }} <-------</p>
+                            <p><b> Lesson: </b> {{ advertisment.lesson }} - {{ advertisment.advInterest }}</p>
 
-                    <p> Duration: {{ advert.duration }}</p>
+                            <p><b>Location:</b> {{ advertisment.user.city }}</p>
 
-                    <p> Type of meeting: {{ advert.type_of_meeting }}</p>
+                            <p><b> Type of meeting: </b> {{ advertisment.type_of_meeting }}</p>
 
+                            <p><b> Duration: </b> {{ advertisment.duration }}</p>
 
-                    <p> ***** next advertisment *****</p>
-                    <br><br>
-                </div>
+                            <p><b> Date: </b>{{ advertisment.date }} </p>
+                        </div>
+                    </div>
+
+                {% endfor %}
             </div>
-        {% endfor %}
-
+        </div>
     {% else %}
-        <p>There are no active advertisement for your interests</p>
+        <p>There are no active advertisements for your interests</p>
     {% endif %}
 
 {% endblock %}

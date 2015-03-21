@@ -8,34 +8,31 @@
 
     {% if latest_advertisement %}
 
-<h1 id = "title">10 Latest Advertisments</h1>
-        <div class="container">
-  {% for advertisment in latest_advertisement %}
+        <div>
+            <div class="row">
 
+                {% for advertisment in latest_advertisement %}
 
+                    <div class="item">
+                        <div class="well">
+                            <p><b> Noob: </b> {{ advertisment.user }}</p>
 
+                            <p><b> Lesson: </b> {{ advertisment.lesson }} - {{ advertisment.advInterest }}</p>
 
-<div class="row">
-    <div class="item">
-      <div class="well">
-            <p><b> Noob: </b> {{ advertisment.user }}</p>
-            <p><b> Type of meeting: </b> {{ advertisment.type_of_meeting }}</p>
-            <p><b> Duration: </b> {{ advertisment.duration }}</p>
-            <p><b> Date:---------  </b>{{ advertisment.date }} -------</p>
-      </div>
-    </div>
+                            <p><b>Location:</b> {{ advertisment.user.city }}</p>
 
+                            <p><b> Type of meeting: </b> {{ advertisment.type_of_meeting }}</p>
 
+                            <p><b> Duration: </b> {{ advertisment.duration }}</p>
 
+                            <p><b> Date: </b>{{ advertisment.date }} </p>
+                        </div>
+                    </div>
 
-
-
-
-
-        {% endfor %}
-</div>
+                {% endfor %}
+            </div>
         </div>
-{% else %}
-    <p>There are no active advertisment</p>
-{% endif %}
+    {% else %}
+        <p>There are no active advertisments</p>
+    {% endif %}
 {% endblock %}
