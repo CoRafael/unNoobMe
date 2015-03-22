@@ -21,3 +21,12 @@ def latest_interest(request):
         '-added')[:10]
     context = {'latest_interest': interestedads}
     return render(request, 'advertisement/interest.html', context)
+
+@login_required
+def my_adds(request):
+    user = request.user
+    user_profile = UserProfile.objects.filter(user=user)[0]
+    interestedads = Advertisement.objects.filter(active=True, user=user_profile).order_by(
+        '-added')[:10]
+    context = {'latest_interest': interestedads}
+    return render(request, 'advertisement/my_adds.html', context)
