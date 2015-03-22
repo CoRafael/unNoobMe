@@ -6,6 +6,5 @@ from addadvertisement import views
 
 
 urlpatterns = patterns('',
-                       url(r'^$', views.add_advertisement, name='addadvertisement'),
-                       url(r'^test/$', views.test, name='test'),)
+                       url(r'^$', views.add_advertisement, name='addadvertisement'),)
 
