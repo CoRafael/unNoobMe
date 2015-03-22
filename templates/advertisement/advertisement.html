@@ -1,1 +1,32 @@
-Hello {{ id }}
+<div class="col-md-12">
+    <div class="well">
+        <p><b> Noob: </b><a href="{% url 'userprofile' advertisement.user %}"> {{ advertisement.get_user }}</a></p>
+
+        <p><b> Lesson: </b>{{ advertisement.lesson }} - {{ advertisement.get_interest }} </p>
+
+        <p><b> Date: </b>{{ advertisement.date }}</p>
+
+        <p><b>Location:</b> {{ advertisement.user.city }}</p>
+
+        <p><b> Duration: </b>{{ advertisement.duration }} hour</p>
+
+        <p><b> Type: </b>{{ advertisement.type_of_meeting }}</p>
+
+        {% if advertisement.user == user %} This is you
+        {% else %}
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-5">
+                    <form role="form" id="addoffer" action="" method="post">
+                        <input type="hidden" name="type" value="addoffer">
+                        <input type="hidden" name="user_offering" value="{{ user }}"
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Offer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+

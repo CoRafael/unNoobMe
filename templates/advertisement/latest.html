@@ -15,7 +15,7 @@
 
                     <div class="col-md-4 column">
                         <div class="well">
-                            <p><b> Noob: </b> {{ advertisment.user }}</p>
+                            <p><b> Noob: </b><a href="{% url 'userprofile' advertisment.user %}"> {{ advertisment.user }}</a></p>
 
                             <p><b> Lesson: </b> {{ advertisment.lesson }} - {{ advertisment.advInterest }}</p>
 
