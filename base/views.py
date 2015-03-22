@@ -10,8 +10,10 @@ from base.forms import UserForm, UserProfileForm
 
 @login_required
 def index(request):
-    return render(request, 'base.html', {})
-
+    user = request.user.username
+    to_call = '/user/'+user +'/'
+    # return render(request, 'base.html', {})
+    return HttpResponseRedirect(to_call)
 
 def user_register(request):
 
