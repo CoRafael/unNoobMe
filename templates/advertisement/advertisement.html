@@ -23,6 +23,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-lg-offset-5">
                             <form role="form" id="addoffer" action="" method="post">
+                                {% csrf_token %}
                                 <input type="hidden" name="type" value="addoffer">
                                 <input type="hidden" name="user_offering" value="{{ user }}">
 
@@ -53,6 +54,7 @@
                         <div class="col-md-4">
                             {% if advertisement.active == true %}
                                 <form role="form">
+                                    {% csrf_token %}
                                     <div class="form-group" id="chooseoffer" action="" method="post">
                                         <input type="hidden" name="type" value="addoffer">
                                         <input type="hidden" name="selectedoffer" value="{{ offer }}">
