@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'notification',
     'rating',
     'userprofile',
+    'adv'
 )
 
 # MALAKIA COMMIT GAMW

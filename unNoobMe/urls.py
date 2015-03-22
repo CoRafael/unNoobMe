@@ -6,8 +6,9 @@ urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^advertisement/', include('advertisement.urls')),
                        url(r'^user/', include('userprofile.urls')),
-                       url('', include('base.urls')),
-                       url(r'^rating/', include('rating.urls')),)
+                       url(r'^rating/', include('rating.urls')),
+                       url('^adv/', include('adv.urls')),
+                       url('', include('base.urls')), )
 
 
 # UNDERNEATH your urlpatterns definition, advertisement the following two lines:

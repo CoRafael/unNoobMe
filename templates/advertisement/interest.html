@@ -22,6 +22,11 @@
                             <p><b>Location:</b> {{ advertisment.user.city }}</p>
 
                             <p><b> Date: </b>{{ advertisment.date }} </p>
+
+                            <div class="pull-right"><a data-toggle="modal"
+                                                       href="{% url 'advertisement' advertisment.id %}"
+                                                       data-target="#form-modal">See more</a></div>
+
                         </div>
                     </div>
 
