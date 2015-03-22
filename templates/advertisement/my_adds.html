@@ -9,7 +9,7 @@
     {% if latest_interest %}
 
         <div>
-            <h2>Advertisments based on my interests!</h2>
+            <h2>My Advertisements!</h2>
 
             <div class="row">
 
@@ -17,7 +17,8 @@
 
                     <div class="col-md-4 column">
                         <div class="well">
-                            <p><b> Noob: </b> <a href="{% url 'userprofile' advertisment.user %}">{{ advertisment.user }}</a></p>
+                            <p><b> Noob: </b> <a
+                                    href="{% url 'userprofile' advertisment.user %}">{{ advertisment.user }}</a></p>
 
                             <p><b> Lesson: </b> {{ advertisment.lesson }} - {{ advertisment.advInterest }}</p>
 
