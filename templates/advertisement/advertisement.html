@@ -1,32 +1,66 @@
-<div class="col-md-12">
-    <div class="well">
-        <p><b> Noob: </b><a href="{% url 'userprofile' advertisement.user %}"> {{ advertisement.get_user }}</a></p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+            <p><b> Noob: </b><a href="{% url 'userprofile' advertisement.user %}"> {{ advertisement.get_user }}</a></p>
 
-        <p><b> Lesson: </b>{{ advertisement.lesson }} - {{ advertisement.get_interest }} </p>
+            <p><b> Lesson: </b>{{ advertisement.lesson }} - {{ advertisement.get_interest }} </p>
 
-        <p><b> Date: </b>{{ advertisement.date }}</p>
+            <p><b> Date: </b>{{ advertisement.date }}</p>
 
-        <p><b>Location:</b> {{ advertisement.user.city }}</p>
+            <p><b>Location:</b> {{ advertisement.user.city }}</p>
 
-        <p><b> Duration: </b>{{ advertisement.duration }} hour</p>
+            <p><b> Duration: </b>{{ advertisement.duration }} hour</p>
 
-        <p><b> Type: </b>{{ advertisement.type_of_meeting }}</p>
+            <p><b> Type: </b>{{ advertisement.type_of_meeting }}</p>
 
-        {% if advertisement.user == user %} This is you
-        {% else %}
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-5">
-                    <form role="form" id="addoffer" action="" method="post">
-                        <input type="hidden" name="type" value="addoffer">
-                        <input type="hidden" name="user_offering" value="{{ user }}"
+            {% if advertisement.user == user %} This is you
+            {% else %}
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-5">
+                        <form role="form" id="addoffer" action="" method="post">
+                            <input type="hidden" name="type" value="addoffer">
+                            <input type="hidden" name="user_offering" value="{{ user }}">
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Offer</button>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Offer</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+
+            {% if advertisement.user != user %}
+
+                {% for offer in offers %}
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ offer.user }}
+                        </div>
+                        <div class="col-md-4">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <form role="form">
+                                <div class="form-group" id="chooseoffer" action="" method="post">
+                                    <input type="hidden" name="type" value="addoffer">
+                                    <input type="hidden" name="selectedoffer" value="{{ offer }}">
+                                    <button type="submit" class="btn btn-primary">Choose offer</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
     </div>
 </div>
 
