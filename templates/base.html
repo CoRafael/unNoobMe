@@ -13,10 +13,23 @@
     {% url 'latest' as latest %}
     {% url 'rating' as rating %}
     {% url 'userprofile' user as userprofile %}
+    {% url 'addadvertisement'  as addadvertisement %}
+
 
     <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/unoobme.css" %}">
 
+
+    <style type="text/css">
+        /**
+         * Override feedback icon position
+         * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+         */
+        #eventForm .form-control-feedback {
+            top: 0;
+            right: -15px;
+        }
+    </style>
 
     <title>unNOOBme - {% block title %}Home{% endblock %}</title>
 
@@ -50,6 +63,8 @@
                     <li class="{% activetag request rating %}"><a href="{% url 'rating' %}">Ratings</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="{% activetag request addadvertisement %}"><a
+                            href="{% url 'addadvertisement' %}">Add(+)</a></li>
                     <li class="dropdown {% activetag request userprofile %}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, {{ user.username }}<span
                                 class="caret"></span></a>
@@ -59,12 +74,6 @@
                             <li><a href="{% url 'logout' %}">Logout</a></li>
                         </ul>
                     </li>
-
-                    <!--
-                        Have to talk about the location of this
-                    <li><a href="{#% url 'advertisement' %#}">Add(+)</a></li>-->
-
-
                 </ul>
             </div>
         </div>
@@ -76,6 +85,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+
 
 <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
