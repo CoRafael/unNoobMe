@@ -9,7 +9,7 @@ class UserProfilePageAdmin(admin.ModelAdmin):
 
 
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display = ( 'id', 'user', 'lesson', 'date', 'type_of_meeting', 'duration', 'active', 'get_interest')
+    list_display = ( 'id', 'user', 'lesson', 'date', 'type_of_meeting', 'duration', 'active', 'get_interest', 'added')
 
 
 class InterestAdmin(admin.ModelAdmin):

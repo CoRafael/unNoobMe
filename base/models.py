@@ -56,7 +56,7 @@ class Advertisement(models.Model):
     # other relationships
     advInterest = models.ForeignKey(Interest)
     user = models.ForeignKey(UserProfile)
-
+    added = models.DateTimeField(auto_now_add=True)
     def __unicode__(self):
         return ", ".join([self.user.user.username, self.date.strftime("%d-%m-%y"), self.advInterest.category])
 
