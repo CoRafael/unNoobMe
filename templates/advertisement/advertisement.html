@@ -19,18 +19,20 @@
 
             {% if advertisement.user == user %} This is you
             {% else %}
-                <div class="row">
-                    <div class="col-lg-4 col-lg-offset-5">
-                        <form role="form" id="addoffer" action="" method="post">
-                            <input type="hidden" name="type" value="addoffer">
-                            <input type="hidden" name="user_offering" value="{{ user }}">
+                {% if advertisement.active == True %}
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-5">
+                            <form role="form" id="addoffer" action="" method="post">
+                                <input type="hidden" name="type" value="addoffer">
+                                <input type="hidden" name="user_offering" value="{{ user }}">
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Offer</button>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Offer</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endif %}
 
             {% if advertisement.user == user %}
@@ -49,13 +51,19 @@
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-4">
-                            <form role="form">
-                                <div class="form-group" id="chooseoffer" action="" method="post">
-                                    <input type="hidden" name="type" value="addoffer">
-                                    <input type="hidden" name="selectedoffer" value="{{ offer }}">
-                                    <button type="submit" class="btn btn-primary">Choose offer</button>
-                                </div>
-                            </form>
+                            {% if advertisement.active == true %}
+                                <form role="form">
+                                    <div class="form-group" id="chooseoffer" action="" method="post">
+                                        <input type="hidden" name="type" value="addoffer">
+                                        <input type="hidden" name="selectedoffer" value="{{ offer }}">
+                                        <button type="submit" class="btn btn-primary">Choose offer</button>
+                                    </div>
+                                </form>
+                            {% else %}
+                                {% if offer.accepted == true %} <span class="label label-success">Selected</span>
+                                {% else %} <span class="label label-default">Declined</span>
+                                {% endif %}
+                            {% endif %}
                         </div>
 
                     </div>

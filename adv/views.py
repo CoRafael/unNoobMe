@@ -8,5 +8,9 @@ from base.models import *
 def advertisement(request, id):
     adv = Advertisement.objects.filter(id=id)[0]
     offers = JobOffer.objects.filter(advertisement=id)
-    context = {'user': request.user, 'advertisement': adv, 'offers': offers}
+
+    print request.user.userprofile
+    print adv.user
+    print adv.user == request.user.userprofile
+    context = {'user': request.user.userprofile, 'advertisement': adv, 'offers': offers}
     return render(request, 'advertisement/advertisement.html', context)
