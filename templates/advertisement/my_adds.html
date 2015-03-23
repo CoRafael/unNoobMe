@@ -5,15 +5,15 @@
 {% block title %}Interests{% endblock %}
 
 {% block body_block %}
-<h2 style="text-align: center">My Advertisements!</h2>
-    {% if my_adds %}
+    <h2 style="text-align: center">My Advertisements!</h2>
+    {% if my_actadds or my_inactadds %}
 
         <div>
 
 
             <div class="row">
-
-                {% for advertisment in my_adds %}
+                {% if my_actadds %} <h2 class="col-md-12">Active advertisements</h2>{% endif %}
+                {% for advertisment in my_actadds %}
 
                     <div class="col-md-4 column">
                         <div class="well">
@@ -35,9 +35,35 @@
 
                 {% endfor %}
             </div>
+
+            <div class="row">
+                {% if my_inactadds %} <h2 class="col-md-12">Inactive advertisements</h2>{% endif %}
+                {% for advertisment in my_inactadds %}
+
+                    <div class="col-md-4 column">
+                        <div class="well">
+                            <p><b> Noob: </b> <a
+                                    href="{% url 'userprofile' advertisment.user %}">{{ advertisment.user }}</a></p>
+
+                            <p><b> Lesson: </b> {{ advertisment.lesson }} - {{ advertisment.advInterest }}</p>
+
+                            <p><b>Location:</b> {{ advertisment.user.city }}</p>
+
+                            <p><b> Date: </b>{{ advertisment.date }} </p>
+
+                            <div class="pull-right"><a data-toggle="modal"
+                                                       href="{% url 'advertisement' advertisment.id %}"
+                                                       data-target="#form-modal">See more</a></div>
+
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
         </div>
     {% else %}
-        <p>There are no active advertisements for your interests</p>
+        <p>You have no advertisements</p>
     {% endif %}
 
 {% endblock %}

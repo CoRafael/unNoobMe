@@ -27,8 +27,9 @@ def my_adds(request):
     try:
         user = request.user
         user_profile = UserProfile.objects.filter(user=user)[0]
-        my_adds = Advertisement.objects.filter(user=user_profile).order_by('-added')[:10]
-        context = {'my_adds': my_adds}
+        my_actadds = Advertisement.objects.filter(user=user_profile, active=True).order_by('-added')[:10]
+        my_inactadds = Advertisement.objects.filter(user=user_profile, active=False).order_by('-added')[:10]
+        context = {'my_actadds': my_actadds, 'my_inactadds': my_inactadds}
     except IndexError:
         context = {}
     return render(request, 'advertisement/my_adds.html', context)
