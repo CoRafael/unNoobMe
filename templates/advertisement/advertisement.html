@@ -55,11 +55,12 @@
                         </div>
                         <div class="col-md-4">
                             {% if advertisement.active == True %}
-                                <form role="form">
+                                <form role="form" id="chooseoffer" action="{% url 'offer' %}" method="post">
                                     {% csrf_token %}
-                                    <div class="form-group" id="chooseoffer" action="" method="post">
-                                        <input type="hidden" name="type" value="addoffer">
-                                        <input type="hidden" name="selectedoffer" value="{{ offer }}">
+                                    <div class="form-group">
+                                        <input type="hidden" name="type" value="chooseoffer">
+                                        <input type="hidden" name="offer_id" value="{{ offer.id }}">
+                                        <input type="hidden" name="advertisement_id" value="{{ advertisement.id }}">
                                         <button type="submit" class="btn btn-primary">Choose offer</button>
                                     </div>
                                 </form>

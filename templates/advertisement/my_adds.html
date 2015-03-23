@@ -6,14 +6,14 @@
 
 {% block body_block %}
 
-    {% if latest_interest %}
+    {% if my_adds %}
 
         <div>
             <h2>My Advertisements!</h2>
 
             <div class="row">
 
-                {% for advertisment in latest_interest %}
+                {% for advertisment in my_adds %}
 
                     <div class="col-md-4 column">
                         <div class="well">
