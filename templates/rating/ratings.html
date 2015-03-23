@@ -12,9 +12,9 @@
             {% for r in ratings %}
                 <div class="col-md-4 column">
                     <div class="well">
-                        <p><b>Author:</b> {{ r.author }}</p>
+                        <p><b>Author:</b>  <a href="{% url 'userprofile' r.author %}">{{ r.author }}</a></p>
 
-                        <p><b> Tutor:</b> {{ r.offer.user }} </p>
+                        <p><b> Tutor:</b>  <a href="{% url 'userprofile' r.offer.user %}">{{ r.offer.user }}</a> </p>
 
                         <p><b> Subject:</b> {{ r.offer.advertisement.advInterest }} </p>
 

@@ -15,7 +15,7 @@ def userprofile(request, username):
 
         ratings = Rating.objects.filter(offer__in=offers)
 
-        context = {'userprofile': user, 'interests': interests, 'ratings': ratings}
+        context = {'username': username, 'userprofile': user, 'interests': interests, 'ratings': ratings}
 
     except IndexError:
         context = {}
