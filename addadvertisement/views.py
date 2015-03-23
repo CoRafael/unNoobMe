@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from base.models import Interest, Advertisement,UserProfile
 
@@ -24,4 +24,4 @@ def add_advertisement(request):
         get_user_profile = UserProfile.objects.get_or_create(user=request.user)[0]
         get_type_interest = Interest.objects.get_or_create(id=interest)[0]
         Advertisement.objects.get_or_create(duration=duration, type_of_meeting=typeofmeeting, date=date, lesson=lesson, advInterest=get_type_interest, user=get_user_profile)
-        return HttpResponseRedirect('/')
+        return HttpResponse("Advertisement successfully created!")

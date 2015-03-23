@@ -43,6 +43,19 @@
 
             $('#interestsselect').multiselect();
 
+            $('#advcreate').on('submit', function (event) {
+                event.preventDefault();
+
+                $.post('/addadvertisement/', $(this).serialize(), function (data) {
+                    $('#advcreatedalert').html(data).show();
+                });
+
+                console.log("form submitted!")  // sanity check
+
+
+            });
+
+
         });
 
 

@@ -38,3 +38,7 @@
 .container {
     min-height: 1600px;
 }
+
+#advcreatedalert {
+    display: none;
+}
