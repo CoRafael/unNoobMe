@@ -1,5 +1,6 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Advertisement</h3>
 </div>
 
 <div class="row">
@@ -22,10 +23,11 @@
                 {% if advertisement.active == True %}
                     <div class="row">
                         <div class="col-lg-4 col-lg-offset-5">
-                            <form role="form" id="addoffer" action="" method="post">
+                            <form role="form" id="addoffer" action="{% url 'offer' %}" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="type" value="addoffer">
                                 <input type="hidden" name="user_offering" value="{{ user }}">
+                                <input type="hidden" name="advertisement" value="{{ advertisement.id }}">
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Offer</button>
@@ -52,7 +54,7 @@
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-4">
-                            {% if advertisement.active == true %}
+                            {% if advertisement.active == True %}
                                 <form role="form">
                                     {% csrf_token %}
                                     <div class="form-group" id="chooseoffer" action="" method="post">
@@ -62,7 +64,7 @@
                                     </div>
                                 </form>
                             {% else %}
-                                {% if offer.accepted == true %} <span class="label label-success">Selected</span>
+                                {% if offer.accepted == True %} <span class="label label-success">Selected</span>
                                 {% else %} <span class="label label-default">Declined</span>
                                 {% endif %}
                             {% endif %}

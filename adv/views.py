@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponseRedirect
 from base.models import *
 
 
@@ -10,3 +10,13 @@ def advertisement(request, id):
     offers = JobOffer.objects.filter(advertisement=id)
     context = {'user': request.user.userprofile, 'advertisement': adv, 'offers': offers}
     return render(request, 'advertisement/advertisement.html', context)
+
+
+@login_required
+def add_offer(request):
+    if request.method == 'POST' and request.POST.get('type') == 'addoffer':
+        get_user_profile = UserProfile.objects.get_or_create(user=request.user)[0]
+        get_id_add = request.POST.get('advertisement')
+        add = Advertisement.objects.get_or_create(id=get_id_add)[0]
+        JobOffer.objects.get_or_create(user=get_user_profile, advertisement=add)
+        return HttpResponseRedirect('/')
