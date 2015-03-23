@@ -35,6 +35,11 @@ def userprofile(request, username):
                    'ratings': ratings}
 
         print interests
+        print allinterests
+        if interests[0].id in allinterests:
+            print "exists"
+        else:
+            print "not"
 
     except IndexError:
         context = {}

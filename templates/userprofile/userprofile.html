@@ -38,7 +38,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-
                         {% if username != userrequest %}
                             <ul style="list-style-type: none" class="list-group list-group-item">
                             {% for f in interests %}
@@ -49,7 +48,8 @@
                                 {% csrf_token %}
                                 <select id="interestsselect" name="interestsselect" multiple="multiple">
                                     {% for interest in allinterests %}
-                                        <option value="{{ interest.id }}">{{ interest }}</option>
+                                        <option value="{{ interest.id }}"
+                                                {% if interest in interests%}selected="selected"{% endif %}>{{ interest }}</option>
                                     {% endfor %}
                                 </select>
                                 <input type="hidden" name="type" value="updateinterests"/>
