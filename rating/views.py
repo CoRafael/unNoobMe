@@ -6,7 +6,7 @@ from base.models import *
 def latest_rating(request):
     try:
         offers = JobOffer.objects.all()
-        ratings = Rating.objects.filter(offer__in=offers)
+        ratings = Rating.objects.filter(offer__in=offers)[:10]
 
         context = {'ratings': ratings}
 

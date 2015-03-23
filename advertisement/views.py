@@ -16,8 +16,7 @@ def latest_interest(request):
     try:
         user = request.user
         user_profile = UserProfile.objects.filter(user=user)[0]
-        interestedads = Advertisement.objects.filter(active=True, advInterest=user_profile.userInterest.all()).order_by(
-            '-added')[:10]
+        interestedads = Advertisement.objects.filter(active=True, advInterest=user_profile.userInterest.all()).order_by('-added')[:10]
         context = {'latest_interest': interestedads}
     except IndexError:
         context = {}
@@ -28,8 +27,7 @@ def my_adds(request):
     try:
         user = request.user
         user_profile = UserProfile.objects.filter(user=user)[0]
-        my_adds = Advertisement.objects.filter(user=user_profile).order_by(
-            '-added')[:10]
+        my_adds = Advertisement.objects.filter(user=user_profile).order_by('-added')[:10]
         context = {'my_adds': my_adds}
     except IndexError:
         context = {}
