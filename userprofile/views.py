@@ -28,11 +28,13 @@ def userprofile(request, username):
         # have to filter selected = true too with real data
 
         ratings = Rating.objects.filter(offer__in=offers)
-        interests = Interest.objects.all()
+        allinterests = Interest.objects.all()
 
         context = {'username': username, 'userrequest': request.user.userprofile.username(), 'userprofile': user,
-                   'interests': interests, 'interests': interests,
+                   'interests': interests, 'allinterests': allinterests,
                    'ratings': ratings}
+
+        print interests
 
     except IndexError:
         context = {}

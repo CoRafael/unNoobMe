@@ -48,7 +48,7 @@
                             <form action="{% url 'userprofile' userrequest %}" method="post">
                                 {% csrf_token %}
                                 <select id="interestsselect" name="interestsselect" multiple="multiple">
-                                    {% for interest in interests %}
+                                    {% for interest in allinterests %}
                                         <option value="{{ interest.id }}">{{ interest }}</option>
                                     {% endfor %}
                                 </select>
