@@ -27,7 +27,7 @@ def userprofile(request, username):
         offers = JobOffer.objects.filter(user=user).order_by('-advertisement_id')[:10]
         # have to filter selected = true too with real data
 
-        ratings = Rating.objects.filter(offer__in=offers)
+        ratings = Rating.objects.filter(offer__in=offers).order_by('-added')
         allinterests = Interest.objects.all()
 
         context = {'username': username, 'userrequest': request.user.userprofile.username(), 'userprofile': user,
