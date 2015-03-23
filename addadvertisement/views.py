@@ -20,9 +20,8 @@ def add_advertisement(request):
         lesson = request.POST.get("lesson", "C/C++")
         duration = request.POST.get("duration", "1")
         date = request.POST.get("date", "2016-02-23 15:00")
-        date = date.replace("/","-",3)
+        date = date.replace("/", "-", 3)
         get_user_profile = UserProfile.objects.get_or_create(user=request.user)[0]
         get_type_interest = Interest.objects.get_or_create(id=interest)[0]
-        Advertisement.objects.get_or_create(duration=duration, type_of_meeting=typeofmeeting, date=date, lesson=lesson,
-                                            advInterest=get_type_interest, user=get_user_profile)
+        Advertisement.objects.get_or_create(duration=duration, type_of_meeting=typeofmeeting, date=date, lesson=lesson, advInterest=get_type_interest, user=get_user_profile)
         return HttpResponseRedirect('/')

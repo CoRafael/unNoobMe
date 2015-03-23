@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-2">
                             {% if offer.accepted == True %}
-                                <form role="form" id="rateoffer" action="" method="post">
+                                <form role="form" id="rateoffer" action="{% url 'rate_offer' %}" method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <input type="hidden" name="type" value="rateoffer">

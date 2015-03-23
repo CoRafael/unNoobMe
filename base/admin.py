@@ -21,7 +21,7 @@ class JobOfferAdmin(admin.ModelAdmin):
 
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'get_offer_id', 'get_author', 'rate', 'comment',)
+    list_display = ('id', 'get_offer_id', 'get_author', 'rate', 'comment', 'added')
 
 admin.site.register(UserProfile, UserProfilePageAdmin)
 admin.site.register(Advertisement, AdvertisementAdmin)

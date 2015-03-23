@@ -65,7 +65,9 @@ class Advertisement(models.Model):
 
     def get_user(self):
         return self.user.username()
-
+    # def save(self, *args, **kwargs):
+    #     self.duration = abs(self.duration)
+    #     super(Advertisement, self).save(*args, **kwargs)
 
 class JobOffer(models.Model):
     accepted = models.BooleanField(default=False)
@@ -86,6 +88,7 @@ class Rating(models.Model):
     # other relationship
     author = models.ForeignKey(UserProfile)
     offer = models.ForeignKey(JobOffer)
+    added = models.DateTimeField(auto_now_add=True)
 
     def get_author(self):
         return self.author.username()
