@@ -12,17 +12,18 @@
             <div class="col-md-3 col-md-offset-1">
 
                 <div class="row">
-                    <div style = "margin-top : 15%"class="col-md-12"><img src="{% static "images/empty-avatar.jpg" %}"/></div>
+                    <div style="margin-top : 15%" class="col-md-12"><img src="{% static "images/empty-avatar.jpg" %}"/>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <h3 style = "margin-left:120%; margin-top : -60%"><b>Username:</b>{{ username }}
+                        <h3 style="margin-left:120%; margin-top : -60%"><b>Username:</b>{{ username }}
                         </h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <h3 style = "margin-top :-30%; margin-left:120%"><b>Points:</b>15
+                        <h3 style="margin-top :-30%; margin-left:120%"><b>Points:</b>15
                         </h3>
                     </div>
                 </div>
@@ -37,10 +38,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <ul style = "list-style-type: none" class="list-group list-group-item">
+
+                        {% if username != userrequest %}
+                            <ul style="list-style-type: none" class="list-group list-group-item">
                             {% for f in interests %}
-                                <li id = "list">{{ f }}</li>
+                                <li id="list">{{ f }}</li>
                             {% endfor %}
+                        {% else %}
+                            Update interests here
+                        {% endif %}
                         </ul>
                     </div>
                 </div>
