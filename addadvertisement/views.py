@@ -9,9 +9,12 @@ from base.models import Interest, Advertisement,UserProfile
 def add_advertisement(request):
 
     if request.method == 'GET':
-        interests = Interest.objects.all()
-        types = ['Skype meeting', 'Cafe meeting', 'Library meeting', 'Home meeting']
-        context = {"interests": interests, "types": types}
+        try:
+            interests = Interest.objects.all()
+            types = ['Skype meeting', 'Cafe meeting', 'Library meeting', 'Home meeting']
+            context = {"interests": interests, "types": types}
+        except IndexError:
+            context = {}
         return render(request, 'addadvertisement.html', context)
     else:
         typeofmeeting = request.POST.get("typeofmeeting", "Skype Meeting")

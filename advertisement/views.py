@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from base.models import *
 
 
+
 # return the latest 10 ACTIVE advertisments of the database
 @login_required
 def latest_advertisement(request):
@@ -15,18 +16,24 @@ def latest_advertisement(request):
 # return the latest 10 ACTIVE advertisments for specific interests of the user
 @login_required
 def latest_interest(request):
-    user = request.user
-    user_profile = UserProfile.objects.filter(user=user)[0]
-    interestedads = Advertisement.objects.filter(active=True, advInterest=user_profile.userInterest.all()).order_by(
-        '-added')[:10]
-    context = {'latest_interest': interestedads}
+    try:
+        user = request.user
+        user_profile = UserProfile.objects.filter(user=user)[0]
+        interestedads = Advertisement.objects.filter(active=True, advInterest=user_profile.userInterest.all()).order_by(
+            '-added')[:10]
+        context = {'latest_interest': interestedads}
+    except IndexError:
+        context = {}
     return render(request, 'advertisement/interest.html', context)
 
 @login_required
 def my_adds(request):
-    user = request.user
-    user_profile = UserProfile.objects.filter(user=user)[0]
-    interestedads = Advertisement.objects.filter(active=True, user=user_profile).order_by(
-        '-added')[:10]
-    context = {'latest_interest': interestedads}
+    try:
+        user = request.user
+        user_profile = UserProfile.objects.filter(user=user)[0]
+        interestedads = Advertisement.objects.filter(active=True, user=user_profile).order_by(
+            '-added')[:10]
+        context = {'latest_interest': interestedads}
+    except IndexError:
+        context = {}
     return render(request, 'advertisement/my_adds.html', context)
