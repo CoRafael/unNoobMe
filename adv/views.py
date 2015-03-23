@@ -9,7 +9,6 @@ def advertisement(request, id):
     adv = Advertisement.objects.filter(id=id)[0]
     offers = JobOffer.objects.filter(advertisement=id)
     context = {'user': request.user.userprofile, 'advertisement': adv, 'offers': offers}
-    print
     return render(request, 'advertisement/advertisement.html', context)
 
 
