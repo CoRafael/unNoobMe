@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.template.defaultfilters import slugify
 
 class Interest(models.Model):
     category = models.CharField(max_length=100, default='Computer Science')
@@ -65,7 +65,9 @@ class Advertisement(models.Model):
 
     def get_user(self):
         return self.user.username()
-
+    def save(self, *args, **kwargs):
+        self.duration = abs(self.duration)
+        super(Advertisement, self).save(*args, **kwargs)
 
 class JobOffer(models.Model):
     accepted = models.BooleanField(default=False)
@@ -92,5 +94,3 @@ class Rating(models.Model):
 
     def get_offer_id(self):
         return self.offer.id
-
-
