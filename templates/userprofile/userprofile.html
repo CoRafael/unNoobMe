@@ -45,7 +45,19 @@
                                 <li id="list">{{ f }}</li>
                             {% endfor %}
                         {% else %}
-                            Update interests here
+                            <form action="{% url 'userprofile' userrequest %}" method="post">
+                                {% csrf_token %}
+                                <select id="interestsselect" name="interestsselect" multiple="multiple">
+                                    {% for interest in interests %}
+                                        <option value="{{ interest.id }}">{{ interest }}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="hidden" name="type" value="updateinterests"/>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Update interests</button>
+                                </div>
+                            </form>
                         {% endif %}
                         </ul>
                     </div>

@@ -24,6 +24,9 @@
           href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css"/>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
+    <script src="https://raw.githubusercontent.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script>
+    <script src="https://raw.githubusercontent.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"></script>
+
     <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/unoobme.css" %}">
 
@@ -37,6 +40,8 @@
             $('body').on('hidden.bs.modal', '.modal', function () {
                 $(this).removeData('bs.modal');
             });
+
+            $('#interestsselect').multiselect();
 
         });
 
@@ -91,8 +96,9 @@
                     <li class="{% activetag request addadvertisement %}"><a
                             href="{% url 'addadvertisement' %}">Add(+)</a></li>
                     <li class="dropdown {% activetag request userprofile %}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, <b>{{ user.username }}</b><span
-                                class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello,
+                            <b>{{ user.username }}</b><span
+                                    class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="{% activetag request userprofile %}"><a href="{% url 'userprofile' user %}">Profile</a>
                             </li>

@@ -34,3 +34,7 @@
 #offers_modal {
     margin-top: 25px;
 }
+
+.container {
+    min-height: 1600px;
+}
