@@ -65,9 +65,7 @@ class Advertisement(models.Model):
 
     def get_user(self):
         return self.user.username()
-    def save(self, *args, **kwargs):
-        self.duration = abs(self.duration)
-        super(Advertisement, self).save(*args, **kwargs)
+
 
 class JobOffer(models.Model):
     accepted = models.BooleanField(default=False)
