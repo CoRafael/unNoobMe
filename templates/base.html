@@ -62,6 +62,7 @@
 <body>
 
 <div class="container">
+
     <img src="{% static "images/logo.png" %}" alt="unNoobMe logo"/>
 
     <nav class="navbar navbar-default">
@@ -90,7 +91,7 @@
                     <li class="{% activetag request addadvertisement %}"><a
                             href="{% url 'addadvertisement' %}">Add(+)</a></li>
                     <li class="dropdown {% activetag request userprofile %}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, {{ user.username }}<span
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, <b>{{ user.username }}</b><span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="{% activetag request userprofile %}"><a href="{% url 'userprofile' user %}">Profile</a>

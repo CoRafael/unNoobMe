@@ -69,6 +69,7 @@
   background-color: #e0e0e0;
   background-image: none;
 }
+
 .btn-primary {
   background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%);
   background-image:      -o-linear-gradient(top, #337ab7 0%, #265a88 100%);

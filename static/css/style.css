@@ -178,6 +178,10 @@ textarea {
     box-sizing: border-box !important;
 }
 
+
+#list{
+    list-style-type: none;
+}
 .button {
     border: 0;
     outline: none;
