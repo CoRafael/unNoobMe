@@ -40,21 +40,24 @@
 
             {% if advertisement.user == user %}
 
-                <div id="offers_modal" class="row"><div class="col-md-12"><h4>Offers</h4></div></div>
+                {% if offers %}
+                    <div id="offers_modal" class="row">
+                        <div class="col-md-12"><h4>Offers</h4></div>
+                    </div>{% endif %}
                 {% for offer in offers %}
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             {{ offer.user }}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             {% if advertisement.active == True %}
                                 <form role="form" id="chooseoffer" action="{% url 'offer' %}" method="post">
                                     {% csrf_token %}
@@ -66,9 +69,22 @@
                                     </div>
                                 </form>
                             {% else %}
-                                {% if offer.accepted == True %} <span class="label label-success">Selected</span>
+                                {% if offer.accepted == True %}
+                                    <span class="label label-success">Selected</span>
                                 {% else %} <span class="label label-default">Declined</span>
                                 {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="col-md-2">
+                            {% if offer.accepted == True %}
+                                <form role="form" id="rateoffer" action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="hidden" name="type" value="rateoffer">
+                                        <input type="hidden" name="offer_id" value="{{ offer.id }}">
+                                        <button type="submit" class="btn btn-primary">Rate</button>
+                                    </div>
+                                </form>
                             {% endif %}
                         </div>
 
