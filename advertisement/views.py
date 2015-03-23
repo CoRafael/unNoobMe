@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
 from base.models import *
-
-
 
 # return the latest 10 ACTIVE advertisments of the database
 @login_required
@@ -31,9 +28,9 @@ def my_adds(request):
     try:
         user = request.user
         user_profile = UserProfile.objects.filter(user=user)[0]
-        interestedads = Advertisement.objects.filter(active=True, user=user_profile).order_by(
+        my_adds = Advertisement.objects.filter(user=user_profile).order_by(
             '-added')[:10]
-        context = {'latest_interest': interestedads}
+        context = {'my_adds': my_adds}
     except IndexError:
         context = {}
     return render(request, 'advertisement/my_adds.html', context)
