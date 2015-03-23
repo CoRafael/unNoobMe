@@ -50,8 +50,8 @@
         </div>
 
         <div id="user_ratings">
-            <h4>Latest ratings</h4>
-
+            {% if ratings %} <h4>Latest ratings</h4>
+            {% endif %}
             <div class="row">
 
                 {% for r in ratings %}

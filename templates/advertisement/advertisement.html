@@ -18,7 +18,7 @@
 
             <p><b> Type: </b>{{ advertisement.type_of_meeting }}</p>
 
-            {% if advertisement.user == user %} This is you
+            {% if advertisement.user == user %}
             {% else %}
                 {% if advertisement.active == True %}
                     <div class="row">
@@ -40,6 +40,7 @@
 
             {% if advertisement.user == user %}
 
+                <div id="offers_modal" class="row"><div class="col-md-12"><h4>Offers</h4></div></div>
                 {% for offer in offers %}
 
                     <div class="row">
