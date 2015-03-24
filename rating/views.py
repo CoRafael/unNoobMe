@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 
 from base.models import *
 
@@ -25,8 +25,9 @@ def rate_offer(request):
         try:
             offer_id = request.POST.get('offer_id')
             offer = JobOffer.objects.get_or_create(id=offer_id)[0]
+            rate = Rating.objects.filter(offer=offer)
             ratings = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-            context = {'offer': offer, 'ratings': ratings}
+            context = {'offer': offer, 'ratings': ratings, 'rate': rate}
         except IndexError:
             context = {}
         return render(request, 'rate_offer.html', context)
@@ -36,5 +37,11 @@ def rate_offer(request):
         comment = request.POST.get('comment')
         author = UserProfile.objects.get_or_create(user=request.user)[0]
         offer = JobOffer.objects.get_or_create(id=offer_id)[0]
-        Rating.objects.get_or_create(rate=rate, comment=comment, author=author, offer=offer)
-        return HttpResponseRedirect('/')
+        try:
+            rating = Rating.objects.filter(author=author, offer=offer)[0]
+            rating.comment = comment
+            rating.rate = rate
+            rating.save()
+        except IndexError:
+            Rating.objects.get_or_create(comment=comment, rate=rate, author=author, offer=offer)
+        return HttpResponse("Rating successfully created!")

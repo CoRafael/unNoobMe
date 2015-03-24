@@ -45,7 +45,6 @@
 
             $('#advcreate').on('submit', function (event) {
                 event.preventDefault();
-
                 $.post('/addadvertisement/', $(this).serialize(), function (data) {
                     $('#advcreatedalert').html(data).show(400);
                     setTimeout(function(){$('#advcreatedalert').hide(400)}, 4000);
@@ -55,6 +54,21 @@
 
 
             });
+
+            $('#rateform').on('submit', function (event) {
+                event.preventDefault();
+                $.post('/rating/rate_offer/', $(this).serialize(), function (data) {
+                    $('#ratecreatealert').html(data).show(400);
+                    setTimeout(function () {
+                        $('#ratecreatealert').hide(400)
+                    }, 4000);
+                });
+
+                console.log("form submitted!")  // sanity check
+
+
+            });
+
 
             $('#intupdate').on('submit', function (event) {
                 event.preventDefault();
