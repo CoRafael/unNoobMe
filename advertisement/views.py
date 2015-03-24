@@ -33,3 +33,29 @@ def my_adds(request):
     except IndexError:
         context = {}
     return render(request, 'advertisement/my_adds.html', context)
+
+@login_required
+def my_offers(request):
+    try:
+        user = request.user
+        user_profile = UserProfile.objects.filter(user=user)[0]
+
+        accepted = JobOffer.objects.filter(user=user_profile, accepted=True)
+        declined = JobOffer.objects.filter(user=user_profile, accepted=False)
+
+        my_actadds = []
+        my_inactadds = []
+
+        for f in accepted:
+            my_actadds.append(f.advertisement)
+
+        for f in declined:
+            my_inactadds.append(f.advertisement)
+
+        my_actadds.sort(key=lambda x: x.added, reverse=True)
+        my_inactadds.sort(key=lambda x: x.added, reverse=True)
+
+        context = {'my_actadds': my_actadds, 'my_inactadds': my_inactadds}
+    except IndexError:
+        context = {}
+    return render(request, 'advertisement/my_offers.html', context)
