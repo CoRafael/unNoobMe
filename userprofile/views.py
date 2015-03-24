@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 from base.models import User, UserProfile, Rating, JobOffer, Interest
 
@@ -18,7 +19,7 @@ def userprofile(request, username):
         for i in interests:
             user.userInterest.add(Interest.objects.get(id=i))
 
-        print user.get_interests()
+        return HttpResponse('Interests successfully updated!')
 
     try:
         user = UserProfile.objects.filter(user=User.objects.filter(username=username)[0])[0]

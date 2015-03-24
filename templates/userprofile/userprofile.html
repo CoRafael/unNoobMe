@@ -6,6 +6,8 @@
 
 {% block body_block %}
 
+    <div class="alert alert-success" role="alert" id="intupdatealert"></div>
+
     {% if userprofile %}
 
         <div class="row">
@@ -44,7 +46,7 @@
                                 <li id="list">{{ f }}</li>
                             {% endfor %}
                         {% else %}
-                            <form action="{% url 'userprofile' userrequest %}" method="post">
+                            <form action="{% url 'userprofile' userrequest %}" id="intupdate" method="post">
                                 {% csrf_token %}
                                 <select id="interestsselect" name="interestsselect" multiple="multiple">
                                     {% for interest in allinterests %}
