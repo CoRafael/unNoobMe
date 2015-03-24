@@ -78,3 +78,6 @@ def user_logout(request):
 
 def contact_us(request):
     return render(request, 'base/contact_us.html', {})
+
+def about(request):
+    return render(request, 'base/about.html', {})
